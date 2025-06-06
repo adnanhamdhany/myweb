@@ -44,35 +44,66 @@ body{
     margin-top: 150px;
     display: grid;
     grid-template-columns: 1fr 1fr ;
+    margin-left: 120px;
+    margin-right: 120px;
 }
 
 .self-name{
-    margin-left: 120px;
-
+    margin-left: 280px;
     p{
         font-size: 70px;
-        font-weight: 500;
+        font-weight: 600;
+        letter-spacing: -4px;
+    }
+}
+
+.my-pict{
+    display: flex;
+    flex-direction: row;
+
+    .my-left-pict{
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .my-right-pict{
+        display: flex;
+        flex-direction: column;
     }
 }
 
 .backpack-pict{
     width: 100px;
+    margin-right:10px;
 }
 .cardigan-pict{
     width: 150px;
+    margin-right:10px;
 }
 .kitten-pict{
     width: 90px;
+    margin-bottom:10px;
 }
 .potrait-anime-pict{
     width: 90px;
 }
 
+.another-pict{
+    margin-left: 180px;
+}
+.anime-girl-pict{
+    width: 90px;
+}
+
+.jacket-pict{
+    width: 100px;
+}
+
 .description{
-    margin-left: 120px;
+
 
     p{
-        font-size: 28px;
+        font-size: 14px;
         font-weight: 500;
     }
 }
