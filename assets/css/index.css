@@ -5,6 +5,7 @@ body{
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding-bottom: 1200px;
+    background-color: #0f1012;
 }
 
 .navbar{
@@ -16,9 +17,10 @@ body{
     left: 50%;
     transform: translateX(-50%);
     width: 800px;
-    background-color: #212529;
+    background-color: #202223;
     color: #CED4DA;
     border-radius: 20px;
+    z-index: 20; /* Ensure navbar is always on top */
 }
 
 .left-navbar{
@@ -40,70 +42,150 @@ body{
     cursor: pointer;
 }
 
-.main-container{
-    margin-top: 150px;
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    margin-left: 120px;
-    margin-right: 120px;
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -2;
 }
 
-.self-name{
-    margin-left: 280px;
-    p{
-        font-size: 70px;
-        font-weight: 600;
-        letter-spacing: -4px;
-    }
+.video-background video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.8); /* Makes the video darker */
 }
 
-.my-pict{
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 16, 18, 0.5); /* Extra dark overlay */
+    z-index: 1;
+    pointer-events: none;
+}
+
+.scroll-blackout {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 0;
+    background: #0f1012;
+    z-index: 2;
+    pointer-events: none;
+    transition: height 0.7s cubic-bezier(0.4, 0, 0.2, 1); /* smoother and slower */
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #CED4DA;
+    width: 700px;
+    z-index: 3;
+    transition: 
+        opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.title h2{
+    font-size: 48px;
+    margin-bottom: 0px;
+}
+.title p{
+    font-size: 20px;
+    margin-top:0px;
+}
+.title.scrolled {
+    opacity: 0;
+    transform: translate(-50%, -200%); /* Move up further so it fully disappears */
+}
+
+.cursor-ball {
+    width: 48px;
+    height: 48px;
+    background: #fff;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: background 0.2s;
+}
+
+
+.bio{
+    color: #ffffff;
+    margin-top:900px;
+    margin-left: 60px;
+    height: 400px;
     display: flex;
-    flex-direction: row;
+    z-index: 10;           /* Lower than navbar */
+    position: relative;
+    opacity: 0; /* Hidden by default */
+    transform: translateY(0);
+    transition:
+        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), /* faster opacity */
+        transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 
-    .my-left-pict{
-        display: flex;
-        align-items: flex-start;
+    .my-img{
+        width: 580px;
+        margin-left: 60px;
+        border-radius: 8%;
     }
+}
 
-    .my-right-pict{
-        display: flex;
-        flex-direction: column;
+.bio p{
+    margin: 0px;
+}
+
+.descripton p:first-of-type {
+    margin-left: 26px;
+}
+
+.bio.visible {
+    opacity: 1; /* Show when .visible is added */
+}
+
+.bio.scrolled {
+    transform: translateY(-200px);
+}
+
+.moving-words {
+    margin-top: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    font-size: 140px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 15;
+}
+
+.moving-words span {
+    display: inline-block;
+    padding-right: 0;
+    animation: moveWords 6s linear infinite; /* Faster animation */
+}
+
+@keyframes moveWords {
+    0% {
+        transform: translateX(0);
     }
-}
-
-.backpack-pict{
-    width: 100px;
-    margin-right:10px;
-}
-.cardigan-pict{
-    width: 150px;
-    margin-right:10px;
-}
-.kitten-pict{
-    width: 90px;
-    margin-bottom:10px;
-}
-.potrait-anime-pict{
-    width: 90px;
-}
-
-.another-pict{
-    margin-left: 180px;
-}
-.anime-girl-pict{
-    width: 90px;
-}
-
-.jacket-pict{
-    width: 100px;
-}
-
-.description{
-
-
-    p{
-        font-size: 14px;
-        font-weight: 500;
+    100% {
+        transform: translateX(-50%);
     }
 }
