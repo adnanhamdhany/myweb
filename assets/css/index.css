@@ -245,6 +245,7 @@ body{
 }
 
 .top-corner {
+    position: fixed;
     font-size: 12px;
     font-weight: 500;
     color: aliceblue;
@@ -253,18 +254,26 @@ body{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     z-index: 15;
-    padding: 45px;              /* Use padding instead of margin */
-    box-sizing: border-box;     /* Ensure padding is inside width */
+    padding: 20px 35px 15px 60px;
+    box-sizing: border-box;    
 }
 
 .left-corner {
     text-align: left;
+    font-size: 15px;
 }
 
 .right-corner {
     text-align: right;
+    font-size: 14px;
+    
+    .navbar-btn{
+        text-decoration: none;
+        padding-right:7px;
+        color: white;
+    }
 }
 
 
