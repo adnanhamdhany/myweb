@@ -4,7 +4,7 @@ window.addEventListener('scroll', function() {
     const blackout = document.querySelector('.scroll-blackout');
     const title = document.querySelector('.title');
     const bio = document.querySelector('.bio');
-    if (window.scrollY > 240) {
+    if (window.scrollY > 80) {
         blackout.style.height = '100vh';
         title.classList.add('scrolled');
         bio.classList.add('scrolled');

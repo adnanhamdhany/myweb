@@ -9,18 +9,19 @@ body{
 }
 
 .navbar{
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    color: #CED4DA;
     position: fixed;
     top: 35px;
     left: 50%;
     transform: translateX(-50%);
-    width: 800px;
-    background-color: #202223;
-    color: #CED4DA;
-    border-radius: 20px;
-    z-index: 20; /* Ensure navbar is always on top */
+    width: auto;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .left-navbar{
@@ -42,22 +43,24 @@ body{
     cursor: pointer;
 }
 
-.video-background {
+.background-image {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    z-index: 0;
     overflow: hidden;
     z-index: -2;
 }
 
-.video-background video {
+.background-image img {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    object-position: center;
-    filter: brightness(0.8); /* Makes the video darker */
+    filter: brightness(0.8) blur(8px); /* Optional: darken and blur */
+    pointer-events: none;
+    user-select: none;
 }
 
 .video-overlay {
@@ -66,9 +69,42 @@ body{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(15, 16, 18, 0.5); /* Extra dark overlay */
+    background: rgba(15, 16, 18, 0.01); /* Extra dark overlay */
     z-index: 1;
     pointer-events: none;
+}
+
+.scroll-down-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100px;
+    width: 64px;
+    height: 64px;
+    background: #222;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 30;
+    transition: background 0.2s;
+}
+.scroll-down-btn:hover {
+    background: #444;
+}
+.scroll-down-btn .arrow {
+    font-size: 2.5rem;
+    color: #fff;
+    line-height: 1;
+}
+
+.scroll-down-btn.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
 }
 
 .scroll-blackout {
@@ -85,12 +121,12 @@ body{
 
 .title {
     position: absolute;
-    top: 50%;
+    top: 46%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #CED4DA;
-    width: 700px;
+    color: #ffffff;
+    width: 900px;
     z-index: 3;
     transition: 
         opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
@@ -98,12 +134,30 @@ body{
 }
 
 .title h2{
-    font-size: 48px;
+    font-size: 108px;
+    font-weight: 600;
     margin-bottom: 0px;
+    line-height: 0.9;
 }
-.title p{
-    font-size: 20px;
-    margin-top:0px;
+.desc{
+    position: absolute;
+    top: 70%;
+    left: 78%;
+    width: 400px;
+    text-align: left;
+}
+
+.desc h4{
+    margin: 0;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.desc h4:first-of-type{
+    margin-right: 30px;
+    text-align: right;
 }
 .title.scrolled {
     opacity: 0;
@@ -127,16 +181,16 @@ body{
 
 .bio{
     color: #ffffff;
-    margin-top:900px;
+    margin-top:400px;
     margin-left: 60px;
     height: 400px;
     display: flex;
-    z-index: 10;           /* Lower than navbar */
+    z-index: 10;          
     position: relative;
-    opacity: 0; /* Hidden by default */
+    opacity: 0; 
     transform: translateY(0);
     transition:
-        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), /* faster opacity */
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), /* faster opacity */
         transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 
     .my-img{
@@ -155,7 +209,7 @@ body{
 }
 
 .bio.visible {
-    opacity: 1; /* Show when .visible is added */
+    opacity: 1; 
 }
 
 .bio.scrolled {
@@ -189,3 +243,28 @@ body{
         transform: translateX(-50%);
     }
 }
+
+.top-corner {
+    font-size: 12px;
+    font-weight: 500;
+    color: aliceblue;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 15;
+    padding: 45px;              /* Use padding instead of margin */
+    box-sizing: border-box;     /* Ensure padding is inside width */
+}
+
+.left-corner {
+    text-align: left;
+}
+
+.right-corner {
+    text-align: right;
+}
+
+
